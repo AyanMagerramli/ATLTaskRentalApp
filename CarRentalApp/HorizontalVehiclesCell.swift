@@ -9,9 +9,14 @@ import UIKit
 
 class HorizontalVehiclesCell: UICollectionViewCell {
 
+    @IBOutlet weak var itemsPerCategorLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var carImage: UIImageView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.carImage.clipsToBounds = false
     }
 
 }

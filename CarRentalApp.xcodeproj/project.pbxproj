@@ -12,6 +12,7 @@
 		11D302DC2AE3CFDA005A559E /* HorizontalVehiclesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11D302DA2AE3CFDA005A559E /* HorizontalVehiclesCell.xib */; };
 		11D302DF2AE3D004005A559E /* VerticalVehiclesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D302DD2AE3D004005A559E /* VerticalVehiclesCell.swift */; };
 		11D302E02AE3D004005A559E /* VerticalVehiclesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11D302DE2AE3D004005A559E /* VerticalVehiclesCell.xib */; };
+		11DAD0582AE54DB300C5D9CF /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DAD0572AE54DB300C5D9CF /* DataModel.swift */; };
 		FE9D309C2AE3A6040004F029 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9D309B2AE3A6040004F029 /* AppDelegate.swift */; };
 		FE9D309E2AE3A6040004F029 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9D309D2AE3A6040004F029 /* SceneDelegate.swift */; };
 		FE9D30A02AE3A6040004F029 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9D309F2AE3A6040004F029 /* LoginVC.swift */; };
@@ -27,6 +28,7 @@
 		11D302DA2AE3CFDA005A559E /* HorizontalVehiclesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalVehiclesCell.xib; sourceTree = "<group>"; };
 		11D302DD2AE3D004005A559E /* VerticalVehiclesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalVehiclesCell.swift; sourceTree = "<group>"; };
 		11D302DE2AE3D004005A559E /* VerticalVehiclesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VerticalVehiclesCell.xib; sourceTree = "<group>"; };
+		11DAD0572AE54DB300C5D9CF /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		FE9D30982AE3A6040004F029 /* CarRentalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarRentalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE9D309B2AE3A6040004F029 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE9D309D2AE3A6040004F029 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				11D302DA2AE3CFDA005A559E /* HorizontalVehiclesCell.xib */,
 				11D302DD2AE3D004005A559E /* VerticalVehiclesCell.swift */,
 				11D302DE2AE3D004005A559E /* VerticalVehiclesCell.xib */,
+				11DAD0572AE54DB300C5D9CF /* DataModel.swift */,
 			);
 			path = CarRentalApp;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 				FE9D30A62AE3A6040004F029 /* CarRentalApp.xcdatamodeld in Sources */,
 				11D302D82AE3CF31005A559E /* VehiclesVC.swift in Sources */,
 				11D302DB2AE3CFDA005A559E /* HorizontalVehiclesCell.swift in Sources */,
+				11DAD0582AE54DB300C5D9CF /* DataModel.swift in Sources */,
 				FE9D309E2AE3A6040004F029 /* SceneDelegate.swift in Sources */,
 				11D302DF2AE3D004005A559E /* VerticalVehiclesCell.swift in Sources */,
 			);
