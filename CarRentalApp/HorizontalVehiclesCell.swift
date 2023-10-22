@@ -17,6 +17,7 @@ class HorizontalVehiclesCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.carImage.clipsToBounds = false
+        
     }
 
 }

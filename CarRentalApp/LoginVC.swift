@@ -13,10 +13,16 @@ class LoginVC: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        passwordTextField.text = "12345"
+        emailTextField.text = "ayan@mail.ru"
     }
 
     @IBAction func loginButtonTapped(_ sender: Any) {
+        if passwordTextField.text == "12345" && emailTextField.text == "ayan@mail.ru" {
+            let controller = storyboard?.instantiateViewController(identifier: "TabBarController")
+            navigationController?.show(controller!, sender: nil)
+        }
+            
     }
     
 }

@@ -10,16 +10,14 @@ import UIKit
 class VehiclesVC: UIViewController {
     @IBOutlet weak var searchBarField: UISearchBar!
     @IBOutlet weak var vehiclesCollection: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         vehiclesCollection.dataSource = self
         vehiclesCollection.delegate = self
         vehiclesCollection.register(UINib(nibName: "HorizontalVehiclesCell", bundle: nil), forCellWithReuseIdentifier: "HorizontalVehiclesCell")
         vehiclesCollection.register(UINib(nibName: "VerticalVehiclesCell", bundle: nil), forCellWithReuseIdentifier: "VerticalVehiclesCell")
-
     }
-    
-    
 }
 extension VehiclesVC: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -49,7 +47,7 @@ extension VehiclesVC: UICollectionViewDataSource {
 
 extension VehiclesVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-      //
+        //
     }
 }
 
@@ -57,7 +55,7 @@ extension VehiclesVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
             return CGSize(width: collectionView.frame.width, height: collectionView.frame.height/3)
-        } else {
+                } else {
             return CGSize(width: collectionView.frame.width, height: collectionView.frame.height/2)
         }
     }
