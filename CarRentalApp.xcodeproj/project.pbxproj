@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11D302D82AE3CF31005A559E /* VehiclesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D302D72AE3CF31005A559E /* VehiclesVC.swift */; };
+		11D302DB2AE3CFDA005A559E /* HorizontalVehiclesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D302D92AE3CFDA005A559E /* HorizontalVehiclesCell.swift */; };
+		11D302DC2AE3CFDA005A559E /* HorizontalVehiclesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11D302DA2AE3CFDA005A559E /* HorizontalVehiclesCell.xib */; };
+		11D302DF2AE3D004005A559E /* VerticalVehiclesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D302DD2AE3D004005A559E /* VerticalVehiclesCell.swift */; };
+		11D302E02AE3D004005A559E /* VerticalVehiclesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11D302DE2AE3D004005A559E /* VerticalVehiclesCell.xib */; };
 		FE9D309C2AE3A6040004F029 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9D309B2AE3A6040004F029 /* AppDelegate.swift */; };
 		FE9D309E2AE3A6040004F029 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9D309D2AE3A6040004F029 /* SceneDelegate.swift */; };
-		FE9D30A02AE3A6040004F029 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9D309F2AE3A6040004F029 /* ViewController.swift */; };
+		FE9D30A02AE3A6040004F029 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9D309F2AE3A6040004F029 /* LoginVC.swift */; };
 		FE9D30A32AE3A6040004F029 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE9D30A12AE3A6040004F029 /* Main.storyboard */; };
 		FE9D30A62AE3A6040004F029 /* CarRentalApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE9D30A42AE3A6040004F029 /* CarRentalApp.xcdatamodeld */; };
 		FE9D30A82AE3A6060004F029 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE9D30A72AE3A6060004F029 /* Assets.xcassets */; };
@@ -17,10 +22,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11D302D72AE3CF31005A559E /* VehiclesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesVC.swift; sourceTree = "<group>"; };
+		11D302D92AE3CFDA005A559E /* HorizontalVehiclesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalVehiclesCell.swift; sourceTree = "<group>"; };
+		11D302DA2AE3CFDA005A559E /* HorizontalVehiclesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalVehiclesCell.xib; sourceTree = "<group>"; };
+		11D302DD2AE3D004005A559E /* VerticalVehiclesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalVehiclesCell.swift; sourceTree = "<group>"; };
+		11D302DE2AE3D004005A559E /* VerticalVehiclesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VerticalVehiclesCell.xib; sourceTree = "<group>"; };
 		FE9D30982AE3A6040004F029 /* CarRentalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarRentalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE9D309B2AE3A6040004F029 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE9D309D2AE3A6040004F029 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FE9D309F2AE3A6040004F029 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FE9D309F2AE3A6040004F029 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		FE9D30A22AE3A6040004F029 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FE9D30A52AE3A6040004F029 /* CarRentalApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CarRentalApp.xcdatamodel; sourceTree = "<group>"; };
 		FE9D30A72AE3A6060004F029 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,12 +70,17 @@
 			children = (
 				FE9D309B2AE3A6040004F029 /* AppDelegate.swift */,
 				FE9D309D2AE3A6040004F029 /* SceneDelegate.swift */,
-				FE9D309F2AE3A6040004F029 /* ViewController.swift */,
+				FE9D309F2AE3A6040004F029 /* LoginVC.swift */,
 				FE9D30A12AE3A6040004F029 /* Main.storyboard */,
 				FE9D30A72AE3A6060004F029 /* Assets.xcassets */,
 				FE9D30A92AE3A6060004F029 /* LaunchScreen.storyboard */,
 				FE9D30AC2AE3A6060004F029 /* Info.plist */,
 				FE9D30A42AE3A6040004F029 /* CarRentalApp.xcdatamodeld */,
+				11D302D72AE3CF31005A559E /* VehiclesVC.swift */,
+				11D302D92AE3CFDA005A559E /* HorizontalVehiclesCell.swift */,
+				11D302DA2AE3CFDA005A559E /* HorizontalVehiclesCell.xib */,
+				11D302DD2AE3D004005A559E /* VerticalVehiclesCell.swift */,
+				11D302DE2AE3D004005A559E /* VerticalVehiclesCell.xib */,
 			);
 			path = CarRentalApp;
 			sourceTree = "<group>";
@@ -128,8 +143,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11D302DC2AE3CFDA005A559E /* HorizontalVehiclesCell.xib in Resources */,
 				FE9D30AB2AE3A6060004F029 /* LaunchScreen.storyboard in Resources */,
 				FE9D30A82AE3A6060004F029 /* Assets.xcassets in Resources */,
+				11D302E02AE3D004005A559E /* VerticalVehiclesCell.xib in Resources */,
 				FE9D30A32AE3A6040004F029 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,10 +158,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE9D30A02AE3A6040004F029 /* ViewController.swift in Sources */,
+				FE9D30A02AE3A6040004F029 /* LoginVC.swift in Sources */,
 				FE9D309C2AE3A6040004F029 /* AppDelegate.swift in Sources */,
 				FE9D30A62AE3A6040004F029 /* CarRentalApp.xcdatamodeld in Sources */,
+				11D302D82AE3CF31005A559E /* VehiclesVC.swift in Sources */,
+				11D302DB2AE3CFDA005A559E /* HorizontalVehiclesCell.swift in Sources */,
 				FE9D309E2AE3A6040004F029 /* SceneDelegate.swift in Sources */,
+				11D302DF2AE3D004005A559E /* VerticalVehiclesCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
