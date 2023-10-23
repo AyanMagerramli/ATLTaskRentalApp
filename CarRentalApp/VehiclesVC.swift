@@ -11,12 +11,21 @@ class VehiclesVC: UIViewController {
     @IBOutlet weak var searchBarField: UISearchBar!
     @IBOutlet weak var vehiclesCollection: UICollectionView!
     
+    let coreData = CoreData(context: AppDelegate().persistentContainer.viewContext)
+    var items = [CarItems]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         vehiclesCollection.dataSource = self
         vehiclesCollection.delegate = self
         vehiclesCollection.register(UINib(nibName: "HorizontalVehiclesCell", bundle: nil), forCellWithReuseIdentifier: "HorizontalVehiclesCell")
         vehiclesCollection.register(UINib(nibName: "VerticalVehiclesCell", bundle: nil), forCellWithReuseIdentifier: "VerticalVehiclesCell")
+        updateItems()
+   
+    }
+    func updateItems () {
+        coreData.fetchItems()
+        items = coreData.items
     }
 }
 extension VehiclesVC: UICollectionViewDataSource {
@@ -29,7 +38,7 @@ extension VehiclesVC: UICollectionViewDataSource {
             return 5
         }
         if section == 1 {
-            return 6
+            return items.count
         }
         return 0
     }
@@ -40,6 +49,10 @@ extension VehiclesVC: UICollectionViewDataSource {
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VerticalVehiclesCell", for: indexPath) as! VerticalVehiclesCell
+            cell.carPriceLabel.text = items[indexPath.row].price
+            cell.carModelLabel.text = items[indexPath.row].name
+            cell.engineLabel.text = items[indexPath.row].engine
+            cell.carBrandLabel.text = items[indexPath.row].category
             return cell
         }
     }

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11B74F242AE6DD09001C0219 /* Categories+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B74F222AE6DD09001C0219 /* Categories+CoreDataClass.swift */; };
+		11B74F252AE6DD09001C0219 /* Categories+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B74F232AE6DD09001C0219 /* Categories+CoreDataProperties.swift */; };
+		11B74F272AE6DEA4001C0219 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B74F262AE6DEA4001C0219 /* CoreData.swift */; };
+		11C9CBBF2AE6E463002EA9DE /* CarItems+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C9CBBD2AE6E463002EA9DE /* CarItems+CoreDataClass.swift */; };
+		11C9CBC02AE6E463002EA9DE /* CarItems+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C9CBBE2AE6E463002EA9DE /* CarItems+CoreDataProperties.swift */; };
 		11D302D82AE3CF31005A559E /* VehiclesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D302D72AE3CF31005A559E /* VehiclesVC.swift */; };
 		11D302DB2AE3CFDA005A559E /* HorizontalVehiclesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D302D92AE3CFDA005A559E /* HorizontalVehiclesCell.swift */; };
 		11D302DC2AE3CFDA005A559E /* HorizontalVehiclesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11D302DA2AE3CFDA005A559E /* HorizontalVehiclesCell.xib */; };
@@ -23,6 +28,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11B74F222AE6DD09001C0219 /* Categories+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Categories+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		11B74F232AE6DD09001C0219 /* Categories+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Categories+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		11B74F262AE6DEA4001C0219 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		11C9CBBD2AE6E463002EA9DE /* CarItems+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarItems+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		11C9CBBE2AE6E463002EA9DE /* CarItems+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarItems+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		11D302D72AE3CF31005A559E /* VehiclesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesVC.swift; sourceTree = "<group>"; };
 		11D302D92AE3CFDA005A559E /* HorizontalVehiclesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalVehiclesCell.swift; sourceTree = "<group>"; };
 		11D302DA2AE3CFDA005A559E /* HorizontalVehiclesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalVehiclesCell.xib; sourceTree = "<group>"; };
@@ -70,6 +80,10 @@
 		FE9D309A2AE3A6040004F029 /* CarRentalApp */ = {
 			isa = PBXGroup;
 			children = (
+				11C9CBBD2AE6E463002EA9DE /* CarItems+CoreDataClass.swift */,
+				11C9CBBE2AE6E463002EA9DE /* CarItems+CoreDataProperties.swift */,
+				11B74F222AE6DD09001C0219 /* Categories+CoreDataClass.swift */,
+				11B74F232AE6DD09001C0219 /* Categories+CoreDataProperties.swift */,
 				FE9D309B2AE3A6040004F029 /* AppDelegate.swift */,
 				FE9D309D2AE3A6040004F029 /* SceneDelegate.swift */,
 				FE9D309F2AE3A6040004F029 /* LoginVC.swift */,
@@ -84,6 +98,7 @@
 				11D302DD2AE3D004005A559E /* VerticalVehiclesCell.swift */,
 				11D302DE2AE3D004005A559E /* VerticalVehiclesCell.xib */,
 				11DAD0572AE54DB300C5D9CF /* DataModel.swift */,
+				11B74F262AE6DEA4001C0219 /* CoreData.swift */,
 			);
 			path = CarRentalApp;
 			sourceTree = "<group>";
@@ -161,12 +176,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11C9CBC02AE6E463002EA9DE /* CarItems+CoreDataProperties.swift in Sources */,
 				FE9D30A02AE3A6040004F029 /* LoginVC.swift in Sources */,
+				11B74F272AE6DEA4001C0219 /* CoreData.swift in Sources */,
 				FE9D309C2AE3A6040004F029 /* AppDelegate.swift in Sources */,
+				11C9CBBF2AE6E463002EA9DE /* CarItems+CoreDataClass.swift in Sources */,
 				FE9D30A62AE3A6040004F029 /* CarRentalApp.xcdatamodeld in Sources */,
+				11B74F242AE6DD09001C0219 /* Categories+CoreDataClass.swift in Sources */,
 				11D302D82AE3CF31005A559E /* VehiclesVC.swift in Sources */,
 				11D302DB2AE3CFDA005A559E /* HorizontalVehiclesCell.swift in Sources */,
 				11DAD0582AE54DB300C5D9CF /* DataModel.swift in Sources */,
+				11B74F252AE6DD09001C0219 /* Categories+CoreDataProperties.swift in Sources */,
 				FE9D309E2AE3A6040004F029 /* SceneDelegate.swift in Sources */,
 				11D302DF2AE3D004005A559E /* VerticalVehiclesCell.swift in Sources */,
 			);

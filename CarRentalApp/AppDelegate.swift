@@ -14,7 +14,75 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+       
+        let coreData = CoreData(context: persistentContainer.viewContext)
+        let car1 = CarModel(
+            price: "20000",
+            name: "Toyota 1",
+            engine: "2 CYL 1.5 L",
+            category: .econom)
+        coreData.saveData(carModel: car1)
+        let car2 = CarModel(
+            price: "30000",
+            name: "Toyota 2",
+            engine: "1 CYL 1.5 L",
+            category: .econom)
+        coreData.saveData(carModel: car2)
+        let car3 = CarModel(
+            price: "40000",
+            name: "Toyota 3",
+            engine: "2 CYL 1 L",
+            category: .econom)
+        coreData.saveData(carModel: car3)
+        let car4 = CarModel(
+            price: "50000",
+            name: "Toyota 4",
+            engine: "2 CYL 3.5 L",
+            category: .Suv)
+        coreData.saveData(carModel: car4)
+        let car5 = CarModel(
+            price: "55000",
+            name: "Toyota 5",
+            engine: "4 CYL 1.5 L",
+            category: .Suv)
+        coreData.saveData(carModel: car5)
+        let car6 = CarModel(
+            price: "60000",
+            name: "Toyota 6",
+            engine: "2 CYL 4 L",
+            category: .Suv)
+        coreData.saveData(carModel: car6)
+        let car7 = CarModel(
+            price: "70000",
+            name: "Toyota 7",
+            engine: "5 CYL 1.5 L",
+            category: .prestige)
+        coreData.saveData(carModel: car7)
+        let car8 = CarModel(
+            price: "80000",
+            name: "Toyota 8",
+            engine: "6 CYL 3.5 L",
+            category: .prestige)
+        coreData.saveData(carModel: car8)
+        let car9 = CarModel(
+            price: "90000",
+            name: "Toyota 9",
+            engine: "5 CYL 1.5 L",
+            category: .prestige)
+        coreData.saveData(carModel: car9)
+         let car10 = CarModel(
+            price: "100000",
+            name: "Toyota 10",
+            engine: "6 CYL 4.5 L",
+            category: .standart)
+        coreData.saveData(carModel: car10)
+        let car11 = CarModel(
+            price: "150000",
+            name: "Toyota 11",
+            engine: "2 CYL 1.5 L",
+            category: .standart)
+        coreData.saveData(carModel: car11)
+        
         return true
     }
 
