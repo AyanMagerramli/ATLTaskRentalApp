@@ -6,7 +6,7 @@
 //
 
 import Foundation
-enum CarCategory {
+enum CarCategory: CaseIterable {
     case standart
     case prestige
     case Suv

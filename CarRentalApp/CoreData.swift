@@ -11,7 +11,7 @@ import CoreData
 class CoreData {
     var context = AppDelegate().persistentContainer.viewContext
     var items = [CarItems]()
-    
+    let categories = CarCategory.self
     init(context: NSManagedObjectContext) {
         self.context = context
     }

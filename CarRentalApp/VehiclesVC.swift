@@ -12,6 +12,7 @@ class VehiclesVC: UIViewController {
     @IBOutlet weak var vehiclesCollection: UICollectionView!
     
     let coreData = CoreData(context: AppDelegate().persistentContainer.viewContext)
+    var categories = CarCategory.self
     var items = [CarItems]()
     
     override func viewDidLoad() {
@@ -26,6 +27,7 @@ class VehiclesVC: UIViewController {
     func updateItems () {
         coreData.fetchItems()
         items = coreData.items
+        UserDefaults.standard.setValue(true, forKey: "isDataLoaded")
     }
 }
 extension VehiclesVC: UICollectionViewDataSource {
@@ -35,7 +37,7 @@ extension VehiclesVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 5
+            return categories.allCases.count
         }
         if section == 1 {
             return items.count
@@ -46,6 +48,20 @@ extension VehiclesVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalVehiclesCell", for: indexPath) as! HorizontalVehiclesCell
+            let category = categories.allCases[indexPath.row]
+            cell.categoryLabel.text = String(describing: category)
+            let categoryCount: Int
+            switch category {
+            case .Suv:
+                categoryCount = items.filter{$0.category == "Suv"}.count
+            case .econom:
+                categoryCount = items.filter{$0.category == "Econom"}.count
+            case .prestige:
+                categoryCount = items.filter{$0.category == "Prestige"}.count
+            case .standart:
+                categoryCount = items.filter{$0.category == "Standart"}.count
+            }
+            cell.itemsPerCategorLabel.text = String(categoryCount)
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VerticalVehiclesCell", for: indexPath) as! VerticalVehiclesCell
