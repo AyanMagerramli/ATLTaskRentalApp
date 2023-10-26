@@ -17,6 +17,7 @@ class CarCategoryCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        carCategoryCollection.backgroundColor = .systemGray6
         carCategoryCollection.register(UINib(nibName: "CategoryCollectionCell", bundle: nil), forCellWithReuseIdentifier: "CategoryCollectionCell")
         carCategoryCollection.dataSource = self
         carCategoryCollection.delegate = self
@@ -56,13 +57,13 @@ extension CarCategoryCell: UICollectionViewDataSource {
 //MARK: Delegate
 extension CarCategoryCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //
+        
     }
 }
 
 //MARK: Flow layout
 extension CarCategoryCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/2, height: collectionView.frame.height)
+        return CGSize(width: collectionView.frame.width/2-15, height: collectionView.frame.height-30)
     }
 }

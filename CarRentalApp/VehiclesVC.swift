@@ -17,6 +17,7 @@ class VehiclesVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        vehiclesTable.backgroundColor = .systemGray6
         vehiclesTable.dataSource = self
         vehiclesTable.delegate = self
         vehiclesTable.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")

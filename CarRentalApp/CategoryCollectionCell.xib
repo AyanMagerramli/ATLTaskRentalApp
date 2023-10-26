@@ -16,15 +16,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="181" height="188"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car_1" translatesAutoresizingMaskIntoConstraints="NO" id="oXy-me-aqt">
-                        <rect key="frame" x="-71" y="0.0" width="240" height="128"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="240" id="1Rz-a2-OQx"/>
-                            <constraint firstAttribute="height" constant="128" id="yFi-pN-3gv"/>
-                        </constraints>
-                    </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="i5s-Vx-aT3">
-                        <rect key="frame" x="30" y="137" width="121" height="40.333333333333343"/>
+                        <rect key="frame" x="30" y="117.99999999999999" width="121" height="40.333333333333329"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Standart" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQQ-ER-9cP">
                                 <rect key="frame" x="0.0" y="0.0" width="121" height="20.333333333333332"/>
@@ -40,6 +33,13 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car_1" translatesAutoresizingMaskIntoConstraints="NO" id="oXy-me-aqt">
+                        <rect key="frame" x="-71" y="-10" width="240" height="128"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="240" id="1Rz-a2-OQx"/>
+                            <constraint firstAttribute="height" constant="128" id="yFi-pN-3gv"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -47,9 +47,9 @@
             <constraints>
                 <constraint firstItem="i5s-Vx-aT3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="30" id="Hhz-Qf-O0R"/>
                 <constraint firstAttribute="trailing" secondItem="i5s-Vx-aT3" secondAttribute="trailing" constant="30" id="HuD-Ax-Zg1"/>
-                <constraint firstItem="i5s-Vx-aT3" firstAttribute="top" secondItem="oXy-me-aqt" secondAttribute="bottom" constant="9" id="Xgc-CR-aJt"/>
+                <constraint firstItem="i5s-Vx-aT3" firstAttribute="top" secondItem="oXy-me-aqt" secondAttribute="bottom" id="Xgc-CR-aJt"/>
                 <constraint firstItem="oXy-me-aqt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="-71" id="vHc-Mo-fV0"/>
-                <constraint firstItem="oXy-me-aqt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="yRg-3Y-UBQ"/>
+                <constraint firstItem="oXy-me-aqt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="-10" id="yRg-3Y-UBQ"/>
             </constraints>
             <size key="customSize" width="181" height="188"/>
             <connections>

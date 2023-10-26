@@ -15,6 +15,7 @@ class TableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        collectionView.backgroundColor = .systemGray6
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "CollectionCell", bundle: nil), forCellWithReuseIdentifier: "CollectionCell")
@@ -25,6 +26,7 @@ class TableViewCell: UITableViewCell {
         items = coreData.items
         UserDefaults.standard.setValue(true, forKey: "isDataLoaded")
     }
+
 }
 
 //MARK: Data Source
@@ -51,6 +53,6 @@ extension TableViewCell: UICollectionViewDelegate {
 //MARK: Flow layout
 extension TableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height/2)
+        return CGSize(width: collectionView.frame.width-10, height: collectionView.frame.height-70)
     }
 }
