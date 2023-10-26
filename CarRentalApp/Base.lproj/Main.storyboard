@@ -117,41 +117,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Otm-k0-1Li">
-                                <rect key="frame" x="0.0" y="153" width="393" height="616"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Rdo-tb-8tB">
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eee-nn-mqh">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="SZJ-tf-hx4">
-                                <rect key="frame" x="30" y="97" width="333" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="73W-ae-zSE" id="uSZ-rK-xXB"/>
-                                </connections>
-                            </searchBar>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="H8l-s6-5Kf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Otm-k0-1Li" firstAttribute="leading" secondItem="H8l-s6-5Kf" secondAttribute="leading" id="20w-TW-QRF"/>
-                            <constraint firstItem="H8l-s6-5Kf" firstAttribute="bottom" secondItem="Otm-k0-1Li" secondAttribute="bottom" id="Dus-C5-uYW"/>
-                            <constraint firstItem="SZJ-tf-hx4" firstAttribute="leading" secondItem="H8l-s6-5Kf" secondAttribute="leading" constant="30" id="J4H-BL-rPg"/>
-                            <constraint firstItem="Otm-k0-1Li" firstAttribute="top" secondItem="H8l-s6-5Kf" secondAttribute="top" constant="50" id="XaO-SK-pyz"/>
-                            <constraint firstItem="H8l-s6-5Kf" firstAttribute="trailing" secondItem="Otm-k0-1Li" secondAttribute="trailing" id="kRU-fA-y5h"/>
-                            <constraint firstItem="Otm-k0-1Li" firstAttribute="top" secondItem="SZJ-tf-hx4" secondAttribute="bottom" id="nr0-8O-h8n"/>
-                            <constraint firstAttribute="trailing" secondItem="SZJ-tf-hx4" secondAttribute="trailing" constant="30" id="xCv-r6-PNB"/>
+                            <constraint firstItem="Rdo-tb-8tB" firstAttribute="leading" secondItem="H8l-s6-5Kf" secondAttribute="leading" id="ZjL-Ry-Vyi"/>
+                            <constraint firstItem="Rdo-tb-8tB" firstAttribute="top" secondItem="H8l-s6-5Kf" secondAttribute="top" id="gsC-vM-ZSt"/>
+                            <constraint firstItem="H8l-s6-5Kf" firstAttribute="trailing" secondItem="Rdo-tb-8tB" secondAttribute="trailing" id="hwO-Ar-HAl"/>
+                            <constraint firstItem="H8l-s6-5Kf" firstAttribute="bottom" secondItem="Rdo-tb-8tB" secondAttribute="bottom" id="yuM-uh-Sn4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Car Rental" id="WK2-ai-2bF"/>
                     <connections>
-                        <outlet property="searchBarField" destination="SZJ-tf-hx4" id="clx-Yq-fwg"/>
-                        <outlet property="vehiclesCollection" destination="Otm-k0-1Li" id="FNY-oF-UNU"/>
+                        <outlet property="vehiclesTable" destination="Rdo-tb-8tB" id="YPT-60-VMe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M4Q-ao-9Dp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

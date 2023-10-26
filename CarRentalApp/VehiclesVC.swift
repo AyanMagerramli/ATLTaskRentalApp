@@ -8,7 +8,7 @@
 import UIKit
 
 class VehiclesVC: UIViewController {
-    @IBOutlet weak var searchBarField: UISearchBar!
+    @IBOutlet weak var vehiclesTable: UITableView!
     @IBOutlet weak var vehiclesCollection: UICollectionView!
     
     let coreData = CoreData(context: AppDelegate().persistentContainer.viewContext)
@@ -17,10 +17,9 @@ class VehiclesVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        vehiclesCollection.dataSource = self
-        vehiclesCollection.delegate = self
-        vehiclesCollection.register(UINib(nibName: "HorizontalVehiclesCell", bundle: nil), forCellWithReuseIdentifier: "HorizontalVehiclesCell")
-        vehiclesCollection.register(UINib(nibName: "VerticalVehiclesCell", bundle: nil), forCellWithReuseIdentifier: "VerticalVehiclesCell")
+        vehiclesTable.dataSource = self
+        vehiclesTable.delegate = self
+        vehiclesTable.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
         updateItems()
    
     }
@@ -87,5 +86,39 @@ extension VehiclesVC: UICollectionViewDelegateFlowLayout {
                 } else {
             return CGSize(width: collectionView.frame.width, height: collectionView.frame.height/2)
         }
+    }
+}
+
+//MARK: Table View Data Source
+extension VehiclesVC: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        3 //search bar, horizontal car (category), vertical car (car model)
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1 //only one searchbar
+        } else if section == 1 {
+            return 1
+        } else {
+            return 1
+        }
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            return UITableViewCell()
+        } else if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CarCategoryCell", for: indexPath) as! CarCategoryCell
+            return cell
+        }
+    }
+}
+
+//MARK: Table View Delegate
+extension VehiclesVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //
     }
 }
