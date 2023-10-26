@@ -47,3 +47,10 @@ extension TableViewCell: UICollectionViewDelegate {
         //
     }
 }
+
+//MARK: Flow layout
+extension TableViewCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height/2)
+    }
+}

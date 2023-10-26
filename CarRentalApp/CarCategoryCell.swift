@@ -59,3 +59,10 @@ extension CarCategoryCell: UICollectionViewDelegate {
         //
     }
 }
+
+//MARK: Flow layout
+extension CarCategoryCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width/2, height: collectionView.frame.height)
+    }
+}
