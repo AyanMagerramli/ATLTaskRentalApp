@@ -21,12 +21,13 @@ class TableViewCell: UITableViewCell {
         collectionView.register(UINib(nibName: "CollectionCell", bundle: nil), forCellWithReuseIdentifier: "CollectionCell")
         updateItems()
     }
+    
     func updateItems () {
         coreData.fetchItems()
         items = coreData.items
         UserDefaults.standard.setValue(true, forKey: "isDataLoaded")
+     //   carItems = yourCarModelArray.filter { $0.category == category }
     }
-
 }
 
 //MARK: Data Source
@@ -34,6 +35,7 @@ extension TableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         items.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! CollectionCell
         cell.carPrice.text = items[indexPath.row].price
@@ -43,6 +45,7 @@ extension TableViewCell: UICollectionViewDataSource {
         return cell
     }
 }
+
 //MARK: Delegate
 extension TableViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

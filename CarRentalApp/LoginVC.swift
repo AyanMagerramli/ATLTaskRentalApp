@@ -21,6 +21,7 @@ class LoginVC: UIViewController {
         if passwordTextField.text == "12345" && emailTextField.text == "ayan@mail.ru" {
             let controller = storyboard?.instantiateViewController(identifier: "TabBarController")
             navigationController?.show(controller!, sender: nil)
+            UserDefaults.standard.setValue(true, forKey: "Logged in")
         }
             
     }

@@ -6,6 +6,9 @@
 //
 
 import UIKit
+protocol CarCategoryCellDelegate {
+    func carCategorySelected (_ category: CarCategory)
+}
 
 class CarCategoryCell: UITableViewCell {
 
@@ -14,6 +17,8 @@ class CarCategoryCell: UITableViewCell {
     let coreData = CoreData(context: AppDelegate().persistentContainer.viewContext)
     var categories = CarCategory.self
     var items = [CarItems]()
+    var selectedCategory: CarCategory?
+    var delegate: CarCategoryCellDelegate? 
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,12 +26,14 @@ class CarCategoryCell: UITableViewCell {
         carCategoryCollection.register(UINib(nibName: "CategoryCollectionCell", bundle: nil), forCellWithReuseIdentifier: "CategoryCollectionCell")
         carCategoryCollection.dataSource = self
         carCategoryCollection.delegate = self
+        delegate?.carCategorySelected(selectedCategory!)
         updateItems()
     }
+
     func updateItems () {
         coreData.fetchItems()
         items = coreData.items
-       // UserDefaults.standard.setValue(true, forKey: "isDataLoaded")
+       //UserDefaults.standard.setValue(true, forKey: "isDataLoaded")
     }
 }
 
@@ -35,6 +42,7 @@ extension CarCategoryCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         categories.allCases.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionCell", for: indexPath) as! CategoryCollectionCell
         let category = categories.allCases[indexPath.row]
@@ -50,16 +58,18 @@ extension CarCategoryCell: UICollectionViewDataSource {
         case .standart:
             categoryCount = items.filter{$0.category == "Standart"}.count
         }
+        selectedCategory = category
         cell.categorySize.text = String(categoryCount)
         return cell
     }
 }
+
 //MARK: Delegate
-extension CarCategoryCell: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
-}
+//extension CarCategoryCell: UICollectionViewDelegate {
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        delegate?.carCategorySelected(selectedCategory!)
+//    }
+//}
 
 //MARK: Flow layout
 extension CarCategoryCell: UICollectionViewDelegateFlowLayout {
@@ -67,3 +77,4 @@ extension CarCategoryCell: UICollectionViewDelegateFlowLayout {
         return CGSize(width: collectionView.frame.width/2-15, height: collectionView.frame.height-30)
     }
 }
+

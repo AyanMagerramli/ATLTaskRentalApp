@@ -8,7 +8,7 @@
 import UIKit
 
 class CollectionCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var imageName: UIImageView!
     @IBOutlet weak var engineType: UILabel!
     @IBOutlet weak var drivingDuration: UILabel!
@@ -16,9 +16,9 @@ class CollectionCell: UICollectionViewCell {
     @IBOutlet weak var engine: UILabel!
     @IBOutlet weak var carModel: UILabel!
     @IBOutlet weak var carBrand: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
        
     }
-
 }

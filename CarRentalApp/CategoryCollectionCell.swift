@@ -13,6 +13,7 @@ class CategoryCollectionCell: UICollectionViewCell {
     @IBOutlet weak var categoryType: UILabel!
     @IBOutlet weak var categoryImage: UIImageView!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.categoryImage.clipsToBounds = false
