@@ -23,8 +23,6 @@ class LoginVC: UIViewController {
             navigationController?.show(controller!, sender: nil)
             UserDefaults.standard.setValue(true, forKey: "Logged in")
         }
-            
     }
-    
 }
 

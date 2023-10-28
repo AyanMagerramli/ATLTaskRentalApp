@@ -6,90 +6,105 @@
 //
 
 import UIKit
-protocol CarCategorySelectionDelegate {
-    func carCategorySelected (_ category: CarCategory)
-}
 
 class VehiclesVC: UIViewController {
-    @IBOutlet weak var vehiclesTable: UITableView!
     
-    var categorySelected: CarCategory?
+    @IBOutlet weak var vehiclesCollectionView: UICollectionView!
+    @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var searchTextField: UITextField!
     
-    //    let coreData = CoreData(context: AppDelegate().persistentContainer.viewContext)
-    //    var categories = CarCategory.self
-    //    var items = [CarItems]()
+    let coreData = CoreData(context: AppDelegate().persistentContainer.viewContext)
+    var items = [CarItems]()
+//    var categorySelected: CarCategory?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        vehiclesTable.backgroundColor = .systemGray6
-        vehiclesTable.dataSource = self
-        vehiclesTable.delegate = self
-        vehiclesTable.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
-        vehiclesTable.register(UINib(nibName: "CarCategoryCell", bundle: nil), forCellReuseIdentifier: "CarCategoryCell")
-        vehiclesTable.register(UINib(nibName: "SearchBarTableCell", bundle: nil), forCellReuseIdentifier: "SearchBarTableCell")
+        vehiclesCollectionView.dataSource = self
+        vehiclesCollectionView.delegate = self
+        searchTextField.borderStyle = .none
+        searchTextField.backgroundColor = UIColor.white
+        searchView.layer.cornerRadius = 30
+        vehiclesCollectionView.backgroundColor = .none
+        updateItems()
+        configureUI()
         
-        //updateItems()
-        
-    }
-    //    func updateItems () {
-    //        coreData.fetchItems()
-    //        items = coreData.items
-    //        UserDefaults.standard.setValue(true, forKey: "isDataLoaded")
-    //    }
-}
-
-//MARK: Table View Data Source
-extension VehiclesVC: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        3 //search bar, horizontal car (category), vertical car (car model)
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1 //only one searchbar
-        } else if section == 1 {
-            return 1
-        } else {
-            return 1
+    func configureUI () {
+        vehiclesCollectionView.register(UINib(nibName: "\(CollectionCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(CollectionCell.self)")
+        vehiclesCollectionView.register(UINib(nibName: "HorizontalReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HorizontalReusableView")
+    }
+    
+    //MARK: - Search Text Field implementation
+    @IBAction func searchAction(_ sender: Any) {
+        print("\(String(describing: searchTextField.text))")
+        if let searchText = searchTextField.text {
+            let filteredItems = items.filter { carItem in
+                return (carItem.name?.lowercased() ?? "").contains(searchText.lowercased()) ||
+                (carItem.category?.lowercased() ?? "").contains(searchText.lowercased())
+            }
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SearchBarTableCell", for: indexPath)
-            return cell
-        } else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CarCategoryCell", for: indexPath) as! CarCategoryCell
-           // cell.delegate = self
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
-            return cell
-        }
+    func updateItems () {
+        coreData.fetchItems()
+        items = coreData.items
+        UserDefaults.standard.setValue(true, forKey: "isDataLoaded")
     }
 }
 
-//MARK: Table View Delegate
-extension VehiclesVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            40
-        } else if indexPath.section == 1 {
-            190
-        } else {
-            450
-        }
-    }
-}
-
-extension VehiclesVC: CarCategorySelectionDelegate {
+//MARK: -Callback for category selection
+extension VehiclesVC: CarCategoryCellDelegate {
     func carCategorySelected(_ category: CarCategory) {
-        categorySelected = category
-        vehiclesTable.reloadData()
+        
+        var filteredItems = coreData.items.filter { $0.category?.lowercased() == category.rawValue }
+        
+        DispatchQueue.main.async {
+            self.items = filteredItems
+            self.vehiclesCollectionView.reloadData()
+        }
+    }
+}
+
+//MARK: -Collection View Data Source
+extension VehiclesVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        items.count
     }
     
- 
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CollectionCell.self)", for: indexPath) as! CollectionCell
+        cell.layer.cornerRadius = 35
+        cell.carBrand.text = items[indexPath.row].category
+        cell.carModel.text = items[indexPath.row].name
+        cell.carPrice.text = items[indexPath.row].price
+        cell.engineType.text = items[indexPath.row].engine
+        return cell
+    }
 }
+
+//MARK: -Collection View Data Source
+extension VehiclesVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+}
+
+//MARK: -Collection View Delegate Flow Layout
+extension VehiclesVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        .init(width: collectionView.frame.width*0.855, height: 340)
+    }
+    
+    //MARK: -Reusable (header or footer) view configuration
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(HorizontalReusableView.self)", for: indexPath) as! HorizontalReusableView
+        header.delegate = self
+        return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        .init(width: collectionView.frame.width, height: 151)
+    }
+}
+

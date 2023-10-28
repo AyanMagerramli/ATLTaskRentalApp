@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -139,23 +140,91 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Rdo-tb-8tB">
-                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDY-I0-I1I">
+                                <rect key="frame" x="19.666666666666657" y="127" width="354" height="60"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search for a car" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qQ7-dL-Wx4">
+                                        <rect key="frame" x="20" y="19" width="314" height="18.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="searchAction:" destination="73W-ae-zSE" eventType="editingChanged" id="JxZ-H3-kkZ"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qn-7E-gpK">
+                                        <rect key="frame" x="278" y="8" width="52" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="52" id="bye-FT-n1E"/>
+                                            <constraint firstAttribute="height" constant="42" id="gCL-Lz-E9P"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="searchTab"/>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                                <constraints>
+                                    <constraint firstItem="qQ7-dL-Wx4" firstAttribute="leading" secondItem="SDY-I0-I1I" secondAttribute="leading" constant="20" id="4eX-W7-pLF"/>
+                                    <constraint firstItem="7qn-7E-gpK" firstAttribute="top" secondItem="SDY-I0-I1I" secondAttribute="top" constant="8" id="FnZ-xR-tJ9"/>
+                                    <constraint firstAttribute="height" constant="60" id="WxK-7C-aC6"/>
+                                    <constraint firstAttribute="trailing" secondItem="qQ7-dL-Wx4" secondAttribute="trailing" constant="20" id="lE1-Gj-Gpc"/>
+                                    <constraint firstAttribute="trailing" secondItem="7qn-7E-gpK" secondAttribute="trailing" constant="24" id="mYU-xG-TVV"/>
+                                    <constraint firstItem="qQ7-dL-Wx4" firstAttribute="top" secondItem="SDY-I0-I1I" secondAttribute="top" constant="19" id="njz-na-s8R"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jAe-OY-S5u">
+                                <rect key="frame" x="0.0" y="217" width="393" height="552"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="15" minimumInteritemSpacing="15" id="NPh-33-zPp">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="151" height="161"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="HorizontalReusableView" id="tZ2-Wg-uwF" customClass="HorizontalReusableView" customModule="CarRentalApp" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="161"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YiW-re-mL2">
+                                            <rect key="frame" x="8" y="8" width="377" height="145"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z7F-Zz-ZZR">
+                                                <size key="itemSize" width="128" height="128"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                            <cells/>
+                                        </collectionView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="YiW-re-mL2" secondAttribute="trailing" id="E7Q-Hb-Efw"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="YiW-re-mL2" secondAttribute="bottom" id="tgQ-VO-Nww"/>
+                                        <constraint firstItem="YiW-re-mL2" firstAttribute="leading" secondItem="tZ2-Wg-uwF" secondAttribute="leadingMargin" id="yfR-xu-KED"/>
+                                        <constraint firstItem="YiW-re-mL2" firstAttribute="top" secondItem="tZ2-Wg-uwF" secondAttribute="topMargin" id="zwG-O8-4kL"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="horizontalCollectionView" destination="YiW-re-mL2" id="ztH-KA-EDS"/>
+                                    </connections>
+                                </collectionReusableView>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="H8l-s6-5Kf"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="MainBackgrounColor"/>
                         <constraints>
-                            <constraint firstItem="Rdo-tb-8tB" firstAttribute="leading" secondItem="H8l-s6-5Kf" secondAttribute="leading" id="ZjL-Ry-Vyi"/>
-                            <constraint firstItem="Rdo-tb-8tB" firstAttribute="top" secondItem="H8l-s6-5Kf" secondAttribute="top" id="gsC-vM-ZSt"/>
-                            <constraint firstItem="H8l-s6-5Kf" firstAttribute="trailing" secondItem="Rdo-tb-8tB" secondAttribute="trailing" id="hwO-Ar-HAl"/>
-                            <constraint firstItem="H8l-s6-5Kf" firstAttribute="bottom" secondItem="Rdo-tb-8tB" secondAttribute="bottom" id="yuM-uh-Sn4"/>
+                            <constraint firstItem="H8l-s6-5Kf" firstAttribute="trailing" secondItem="jAe-OY-S5u" secondAttribute="trailing" id="10X-0v-X2P"/>
+                            <constraint firstItem="jAe-OY-S5u" firstAttribute="leading" secondItem="H8l-s6-5Kf" secondAttribute="leading" id="7GZ-83-pzf"/>
+                            <constraint firstItem="H8l-s6-5Kf" firstAttribute="bottom" secondItem="jAe-OY-S5u" secondAttribute="bottom" id="8Ny-hM-wQa"/>
+                            <constraint firstItem="SDY-I0-I1I" firstAttribute="width" secondItem="KQ1-Cz-LkE" secondAttribute="width" multiplier="0.900763" id="Rvm-sT-v6C"/>
+                            <constraint firstItem="SDY-I0-I1I" firstAttribute="centerX" secondItem="H8l-s6-5Kf" secondAttribute="centerX" id="XWL-14-QY9"/>
+                            <constraint firstItem="jAe-OY-S5u" firstAttribute="top" secondItem="SDY-I0-I1I" secondAttribute="bottom" constant="30" id="oCF-rt-PRU"/>
+                            <constraint firstItem="SDY-I0-I1I" firstAttribute="top" secondItem="H8l-s6-5Kf" secondAttribute="top" constant="24" id="ztO-eg-Fdc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Car Rental" id="WK2-ai-2bF"/>
                     <connections>
-                        <outlet property="vehiclesTable" destination="Rdo-tb-8tB" id="YPT-60-VMe"/>
+                        <outlet property="searchTextField" destination="qQ7-dL-Wx4" id="e11-QC-KCz"/>
+                        <outlet property="searchView" destination="SDY-I0-I1I" id="iMt-SK-5vw"/>
+                        <outlet property="vehiclesCollectionView" destination="jAe-OY-S5u" id="76A-tf-iIb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M4Q-ao-9Dp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -169,7 +238,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tb4-Lq-RaC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="nFV-Bo-piY" kind="relationship" relationship="viewControllers" id="PyP-Rv-78a"/>
@@ -263,6 +332,9 @@
         <image name="logo" width="122" height="146"/>
         <image name="searchTab" width="28" height="28"/>
         <image name="vehiclesTab" width="28" height="28"/>
+        <namedColor name="MainBackgrounColor">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

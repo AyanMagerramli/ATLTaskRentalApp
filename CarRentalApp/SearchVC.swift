@@ -71,9 +71,9 @@ extension SearchVC: UICollectionViewDelegate {
 extension SearchVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
-            return CGSize(width: collectionView.frame.width, height:collectionView.frame.height/6)
+            return CGSize(width: 354, height: 60)
         } else {
-            return CGSize(width: collectionView.frame.width-10, height: collectionView.frame.height/6*3)
+            return CGSize(width: 354, height: 368)
         }
     }
 }

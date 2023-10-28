@@ -6,12 +6,14 @@
 //
 
 import Foundation
-enum CarCategory: CaseIterable {
+
+public enum CarCategory: String, CaseIterable {
     case standart
     case prestige
-    case Suv
+    case suv
     case econom
 }
+
 struct CarModel {
     let price: String
     let name: String

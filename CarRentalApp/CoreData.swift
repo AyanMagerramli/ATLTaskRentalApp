@@ -9,9 +9,10 @@ import Foundation
 import CoreData
 
 class CoreData {
+    
     var context = AppDelegate().persistentContainer.viewContext
     var items = [CarItems]()
-    let categories = CarCategory.self
+    
     init(context: NSManagedObjectContext) {
         self.context = context
     }
@@ -21,22 +22,15 @@ class CoreData {
         model.engine = carModel.engine
         model.name = carModel.name
         model.price = carModel.price
+        model.category = carModel.category.rawValue
         
-        switch carModel.category {
-        case .standart:
-            model.category = "Standart"
-        case .prestige:
-            model.category = "Prestige"
-        case .Suv:
-            model.category = "Suv"
-        case .econom:
-            model.category = "Econom"
-        }
+        
         do {
             try context.save()
         } catch {
             print(error.localizedDescription)
         }
+        
     }
     
     func fetchItems() {

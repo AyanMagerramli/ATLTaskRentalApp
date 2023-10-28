@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		114B0D3F2AEC738700E35E21 /* HorizontalReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114B0D3D2AEC738700E35E21 /* HorizontalReusableView.swift */; };
+		114B0D402AEC738700E35E21 /* HorizontalReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 114B0D3E2AEC738700E35E21 /* HorizontalReusableView.xib */; };
 		1153466D2AEBC20E0035E1E4 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1153466C2AEBC20E0035E1E4 /* SearchVC.swift */; };
 		115346742AEBCC990035E1E4 /* SearchBarCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115346722AEBCC990035E1E4 /* SearchBarCollectionCell.swift */; };
 		115346752AEBCC990035E1E4 /* SearchBarCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115346732AEBCC990035E1E4 /* SearchBarCollectionCell.xib */; };
@@ -37,6 +39,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		114B0D3D2AEC738700E35E21 /* HorizontalReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalReusableView.swift; sourceTree = "<group>"; };
+		114B0D3E2AEC738700E35E21 /* HorizontalReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalReusableView.xib; sourceTree = "<group>"; };
 		1153466C2AEBC20E0035E1E4 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		115346722AEBCC990035E1E4 /* SearchBarCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarCollectionCell.swift; sourceTree = "<group>"; };
 		115346732AEBCC990035E1E4 /* SearchBarCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBarCollectionCell.xib; sourceTree = "<group>"; };
@@ -104,7 +108,6 @@
 				11B74F232AE6DD09001C0219 /* Categories+CoreDataProperties.swift */,
 				FE9D309B2AE3A6040004F029 /* AppDelegate.swift */,
 				FE9D309D2AE3A6040004F029 /* SceneDelegate.swift */,
-				FE9D309F2AE3A6040004F029 /* LoginVC.swift */,
 				FE9D30A12AE3A6040004F029 /* Main.storyboard */,
 				FE9D30A72AE3A6060004F029 /* Assets.xcassets */,
 				FE9D30A92AE3A6060004F029 /* LaunchScreen.storyboard */,
@@ -113,8 +116,9 @@
 				11D302D72AE3CF31005A559E /* VehiclesVC.swift */,
 				11DAD0572AE54DB300C5D9CF /* DataModel.swift */,
 				11B74F262AE6DEA4001C0219 /* CoreData.swift */,
-				11D4498A2AEACC64008F65B7 /* TableViewCell.swift */,
+				FE9D309F2AE3A6040004F029 /* LoginVC.swift */,
 				11D4498B2AEACC64008F65B7 /* TableViewCell.xib */,
+				11D4498A2AEACC64008F65B7 /* TableViewCell.swift */,
 				11D4498E2AEACEC0008F65B7 /* CollectionCell.swift */,
 				11D4498F2AEACEC0008F65B7 /* CollectionCell.xib */,
 				11D449922AEAD1DC008F65B7 /* CategoryCollectionCell.swift */,
@@ -126,6 +130,8 @@
 				115346732AEBCC990035E1E4 /* SearchBarCollectionCell.xib */,
 				115346762AEBCEEC0035E1E4 /* SearchBarTableCell.swift */,
 				115346772AEBCEED0035E1E4 /* SearchBarTableCell.xib */,
+				114B0D3D2AEC738700E35E21 /* HorizontalReusableView.swift */,
+				114B0D3E2AEC738700E35E21 /* HorizontalReusableView.xib */,
 			);
 			path = CarRentalApp;
 			sourceTree = "<group>";
@@ -197,6 +203,7 @@
 				11D449952AEAD1DC008F65B7 /* CategoryCollectionCell.xib in Resources */,
 				11D449912AEACEC0008F65B7 /* CollectionCell.xib in Resources */,
 				FE9D30A32AE3A6040004F029 /* Main.storyboard in Resources */,
+				114B0D402AEC738700E35E21 /* HorizontalReusableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				114B0D3F2AEC738700E35E21 /* HorizontalReusableView.swift in Sources */,
 				11C9CBC02AE6E463002EA9DE /* CarItems+CoreDataProperties.swift in Sources */,
 				11D449942AEAD1DC008F65B7 /* CategoryCollectionCell.swift in Sources */,
 				FE9D30A02AE3A6040004F029 /* LoginVC.swift in Sources */,
