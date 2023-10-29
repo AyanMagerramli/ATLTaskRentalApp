@@ -2,7 +2,7 @@
 //  CarItems+CoreDataProperties.swift
 //  CarRentalApp
 //
-//  Created by Ayan on 23.10.23.
+//  Created by Ayan on 29.10.23.
 //
 //
 
@@ -16,10 +16,11 @@ extension CarItems {
         return NSFetchRequest<CarItems>(entityName: "CarItems")
     }
 
+    @NSManaged public var category: String?
+    @NSManaged public var engine: String?
+    @NSManaged public var image: String?
     @NSManaged public var name: String?
     @NSManaged public var price: String?
-    @NSManaged public var engine: String?
-    @NSManaged public var category: String?
 
 }
 

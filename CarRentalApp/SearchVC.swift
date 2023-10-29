@@ -15,7 +15,7 @@ class SearchVC: UIViewController {
  
     
     let coreData = CoreData(context: AppDelegate().persistentContainer.viewContext)
-    var items: [CarItems] = []
+    var items: [CarList] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,10 +57,7 @@ extension SearchVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! CollectionCell
         cell.layer.cornerRadius = 35
-        cell.carBrand.text = items[indexPath.row].category
-        cell.carModel.text = items[indexPath.row].name
-        cell.carPrice.text = items[indexPath.row].price
-        cell.engineType.text = items[indexPath.row].engine
+        cell.configureCarCell(data: items[indexPath.row])
         return cell
     }
 }

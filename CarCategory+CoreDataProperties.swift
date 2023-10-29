@@ -2,7 +2,7 @@
 //  CarCategory+CoreDataProperties.swift
 //  CarRentalApp
 //
-//  Created by Ayan on 22.10.23.
+//  Created by Ayan on 29.10.23.
 //
 //
 
@@ -16,9 +16,9 @@ extension CarCategory {
         return NSFetchRequest<CarCategory>(entityName: "CarCategory")
     }
 
-    @NSManaged public var name: String?
-    @NSManaged public var image: String?
-    @NSManaged public var size: String?
+    @NSManaged public var categoryName: String?
+    @NSManaged public var categoryImage: String?
+    @NSManaged public var categorySize: String?
 
 }
 

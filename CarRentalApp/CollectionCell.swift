@@ -7,6 +7,14 @@
 
 import UIKit
 
+protocol CarItemProtocol {
+    var imageName: String {get}
+    var engineType: String {get}
+    var priceText: String {get}
+    var carName: String {get}
+    var brandName: String {get}
+}
+
 class CollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var imageName: UIImageView!
@@ -20,5 +28,13 @@ class CollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
        
+    }
+    
+    func configureCarCell (data: CarItemProtocol) {
+        imageName.image = UIImage(named: data.imageName)
+        carBrand.text = data.brandName
+        carModel.text = data.carName
+        carPrice.text = data.priceText
+        engineType.text = data.engineType
     }
 }

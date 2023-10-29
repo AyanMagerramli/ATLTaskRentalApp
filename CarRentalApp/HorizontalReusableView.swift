@@ -9,7 +9,7 @@ import UIKit
 
 //MARK: Delegate for Car Category selection
 protocol CarCategoryCellDelegate {
-    func carCategorySelected (_ category: CarCategory)
+    func carCategorySelected (_ category: CategoryList)
 }
 
 class HorizontalReusableView: UICollectionReusableView {
@@ -17,9 +17,10 @@ class HorizontalReusableView: UICollectionReusableView {
     @IBOutlet weak var horizontalCollection: UICollectionView!
     
     let coreData = CoreData(context: AppDelegate().persistentContainer.viewContext)
-    var categories = CarCategory.self
-    var items = [CarItems]()
-    var selectedCategory: CarCategory?
+    let coredataForCategories = CoredataForCategory(context: AppDelegate().persistentContainer.viewContext)
+    var categories = [CategoryList]()
+    var items = [CarList]()
+    var selectedCategory: CategoryList?
     var delegate: CarCategoryCellDelegate?
     var selectedIndex: IndexPath?
     
@@ -30,19 +31,26 @@ class HorizontalReusableView: UICollectionReusableView {
         horizontalCollection.delegate = self
         horizontalCollection.register(UINib(nibName: "CategoryCollectionCell", bundle: nil), forCellWithReuseIdentifier: "CategoryCollectionCell")
         updateItems()
+        updateCategories()
+        print("MY CATEGORIEEEEEEEEESS \(categories)")
     }
     
     func updateItems () {
         coreData.fetchItems()
         items = coreData.items
-        print(items)
+       // print(items)
+    }
+    
+    func updateCategories () {
+        coredataForCategories.fetchItems()
+        categories = coredataForCategories.items
     }
 }
 
 //MARK: -Collection View Data Source
 extension HorizontalReusableView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        categories.allCases.count
+        categories.count
     }
     
     func collectionView(
@@ -54,12 +62,10 @@ extension HorizontalReusableView: UICollectionViewDataSource {
             for: indexPath
         ) as! CategoryCollectionCell
         
-        let category = categories.allCases[indexPath.row]
-        cell.categoryType.text = String(describing: category)
-        
-        let categoryCount = items.filter{$0.category?.lowercased() == category.rawValue}.count
-        
-        cell.categorySize.text = String(categoryCount)
+        cell.categorySize.text = categories[indexPath.row].size
+        cell.categoryType.text = categories[indexPath.row].name
+        cell.categoryImage.image = UIImage(named: categories[indexPath.row].image ?? "")
+//        let categoryCount = items.filter{$0.category?.lowercased() == category.rawValue}.count
         cell.layer.cornerRadius = 15
         //in order to change background color into blue
         //and text colors into white
@@ -81,7 +87,8 @@ extension HorizontalReusableView: UICollectionViewDelegate, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath
         collectionView.reloadData()
-        selectedCategory = categories.allCases[indexPath.row]
+        selectedCategory = categories[indexPath.row]
+        print("Selected CATEH+GORY ISS: \(selectedCategory)")
         delegate?.carCategorySelected(selectedCategory!)
     }
     

@@ -14,7 +14,7 @@ class VehiclesVC: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     
     let coreData = CoreData(context: AppDelegate().persistentContainer.viewContext)
-    var items = [CarItems]()
+    var items = [CarList]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,15 +49,15 @@ class VehiclesVC: UIViewController {
     func updateItems () {
         coreData.fetchItems()
         items = coreData.items
+        print("this is core data items\(coreData.items)")
         UserDefaults.standard.setValue(true, forKey: "isDataLoaded")
     }
 }
 
 //MARK: -Callback for category selection
 extension VehiclesVC: CarCategoryCellDelegate {
-    func carCategorySelected(_ category: CarCategory) {
-        
-        var filteredItems = coreData.items.filter { $0.category?.lowercased() == category.rawValue }
+    func carCategorySelected(_ category: CategoryList) {
+        let filteredItems = coreData.items.filter { $0.category?.lowercased() == category.name?.lowercased()}
         
         DispatchQueue.main.async {
             self.items = filteredItems
@@ -75,10 +75,7 @@ extension VehiclesVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CollectionCell.self)", for: indexPath) as! CollectionCell
         cell.layer.cornerRadius = 35
-        cell.carBrand.text = items[indexPath.row].category
-        cell.carModel.text = items[indexPath.row].name
-        cell.carPrice.text = items[indexPath.row].price
-        cell.engineType.text = items[indexPath.row].engine
+        cell.configureCarCell(data: items[indexPath.row])
         return cell
     }
 }
@@ -107,4 +104,5 @@ extension VehiclesVC: UICollectionViewDelegateFlowLayout {
         .init(width: collectionView.frame.width, height: 151)
     }
 }
+
 

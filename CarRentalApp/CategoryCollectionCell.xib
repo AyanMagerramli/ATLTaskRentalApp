@@ -48,10 +48,10 @@
                             <constraint firstAttribute="bottom" secondItem="i5s-Vx-aT3" secondAttribute="bottom" constant="5" id="rky-sw-G4u"/>
                         </constraints>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car_1" translatesAutoresizingMaskIntoConstraints="NO" id="oXy-me-aqt">
-                        <rect key="frame" x="66" y="0.0" width="151" height="116"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car2" translatesAutoresizingMaskIntoConstraints="NO" id="oXy-me-aqt">
+                        <rect key="frame" x="56" y="10" width="151" height="100"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="116" id="byG-wN-s77"/>
+                            <constraint firstAttribute="height" constant="100" id="byG-wN-s77"/>
                             <constraint firstAttribute="width" constant="151" id="hsv-8M-Elm"/>
                         </constraints>
                     </imageView>
@@ -60,10 +60,10 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" name="MainBackgrounColor"/>
             <constraints>
-                <constraint firstItem="oXy-me-aqt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MrA-Bs-ioR"/>
+                <constraint firstItem="oXy-me-aqt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="MrA-Bs-ioR"/>
                 <constraint firstItem="eOS-z7-eG0" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="c3J-Rs-WD4"/>
                 <constraint firstAttribute="trailing" secondItem="eOS-z7-eG0" secondAttribute="trailing" constant="5" id="kFh-qf-uch"/>
-                <constraint firstAttribute="trailing" secondItem="oXy-me-aqt" secondAttribute="trailing" id="qZx-pT-1zB"/>
+                <constraint firstAttribute="trailing" secondItem="oXy-me-aqt" secondAttribute="trailing" constant="10" id="qZx-pT-1zB"/>
             </constraints>
             <size key="customSize" width="217" height="191"/>
             <connections>
@@ -76,9 +76,9 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="car_1" width="151" height="86"/>
+        <image name="car2" width="151" height="87"/>
         <namedColor name="MainBackgrounColor">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89800000190734863" green="0.89800000190734863" blue="0.89800000190734863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
