@@ -21,6 +21,7 @@ class HorizontalReusableView: UICollectionReusableView {
     var items = [CarItems]()
     var selectedCategory: CarCategory?
     var delegate: CarCategoryCellDelegate?
+    var selectedIndex: IndexPath?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,7 +36,6 @@ class HorizontalReusableView: UICollectionReusableView {
         coreData.fetchItems()
         items = coreData.items
         print(items)
-       
     }
 }
 
@@ -61,6 +61,17 @@ extension HorizontalReusableView: UICollectionViewDataSource {
         
         cell.categorySize.text = String(categoryCount)
         cell.layer.cornerRadius = 15
+        //in order to change background color into blue
+        //and text colors into white
+        if indexPath == selectedIndex{
+            cell.categoryView.backgroundColor = .systemBlue
+            cell.categorySize.textColor = .white
+            cell.categoryType.textColor = .white
+        } else {
+            cell.categoryView.backgroundColor = .white
+            cell.categorySize.textColor = .black
+            cell.categoryType.textColor = .black
+        }
         return cell
     }
 }
@@ -68,14 +79,13 @@ extension HorizontalReusableView: UICollectionViewDataSource {
 //MARK: -Collection View Delegate, flow delegate
 extension HorizontalReusableView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        selectedIndex = indexPath
+        collectionView.reloadData()
         selectedCategory = categories.allCases[indexPath.row]
-        print("Ali \(String(describing: selectedCategory))")
-            delegate?.carCategorySelected(selectedCategory!)
-        }
-    
+        delegate?.carCategorySelected(selectedCategory!)
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        .init(width: 200, height: collectionView.frame.height-10)
+        .init(width: 151, height: 161)
     }
 }

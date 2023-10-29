@@ -15,7 +15,6 @@ class VehiclesVC: UIViewController {
     
     let coreData = CoreData(context: AppDelegate().persistentContainer.viewContext)
     var items = [CarItems]()
-//    var categorySelected: CarCategory?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +37,9 @@ class VehiclesVC: UIViewController {
     //MARK: - Search Text Field implementation
     @IBAction func searchAction(_ sender: Any) {
         print("\(String(describing: searchTextField.text))")
+        vehiclesCollectionView.reloadData()
         if let searchText = searchTextField.text {
-            let filteredItems = items.filter { carItem in
+            items = coreData.items.filter { carItem in
                 return (carItem.name?.lowercased() ?? "").contains(searchText.lowercased()) ||
                 (carItem.category?.lowercased() ?? "").contains(searchText.lowercased())
             }

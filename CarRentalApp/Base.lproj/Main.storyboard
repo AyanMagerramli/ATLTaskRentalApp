@@ -87,8 +87,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QaF-LA-BeI">
-                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="199" width="393" height="570"/>
+                                <color key="backgroundColor" name="MainBackgrounColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JjS-d2-8q2">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -97,19 +97,52 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFl-1X-d1L">
+                                <rect key="frame" x="20" y="122" width="353" height="60"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search for a car" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eVG-8h-u3C">
+                                        <rect key="frame" x="20" y="19" width="313" height="18.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="searchAction:" destination="73W-ae-zSE" eventType="editingChanged" id="Kzi-B6-Mp1"/>
+                                            <action selector="searchAction:" destination="iOo-Xz-kao" eventType="editingChanged" id="nRS-vm-ly0"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJY-BF-lAe">
+                                        <rect key="frame" x="278" y="8" width="52" height="42"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="searchTab"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="1P1-qp-m7g"/>
+                                    <constraint firstItem="eVG-8h-u3C" firstAttribute="leading" secondItem="YFl-1X-d1L" secondAttribute="leading" constant="20" id="Cap-Vb-Gf3"/>
+                                    <constraint firstAttribute="trailing" secondItem="eVG-8h-u3C" secondAttribute="trailing" constant="20" id="YJv-YX-Omf"/>
+                                    <constraint firstItem="eVG-8h-u3C" firstAttribute="top" secondItem="YFl-1X-d1L" secondAttribute="top" constant="19" id="c2z-DN-1nR"/>
+                                    <constraint firstItem="VJY-BF-lAe" firstAttribute="leading" secondItem="YFl-1X-d1L" secondAttribute="leading" constant="278" id="dsk-qd-7d0"/>
+                                    <constraint firstItem="VJY-BF-lAe" firstAttribute="top" secondItem="YFl-1X-d1L" secondAttribute="top" constant="8" id="nMh-Ok-alR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Dre-o6-WIO"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="MainBackgrounColor"/>
                         <constraints>
+                            <constraint firstItem="Dre-o6-WIO" firstAttribute="trailing" secondItem="YFl-1X-d1L" secondAttribute="trailing" constant="20" id="GNa-bW-dmi"/>
                             <constraint firstItem="Dre-o6-WIO" firstAttribute="trailing" secondItem="QaF-LA-BeI" secondAttribute="trailing" id="Pyp-9Y-8kI"/>
+                            <constraint firstItem="YFl-1X-d1L" firstAttribute="leading" secondItem="Dre-o6-WIO" secondAttribute="leading" constant="20" id="TxM-AI-Ap4"/>
                             <constraint firstItem="Dre-o6-WIO" firstAttribute="bottom" secondItem="QaF-LA-BeI" secondAttribute="bottom" id="XwV-qy-ddt"/>
-                            <constraint firstItem="QaF-LA-BeI" firstAttribute="top" secondItem="Dre-o6-WIO" secondAttribute="top" id="blz-VR-8IT"/>
+                            <constraint firstItem="YFl-1X-d1L" firstAttribute="top" secondItem="Dre-o6-WIO" secondAttribute="top" constant="19" id="a2u-L8-82o"/>
+                            <constraint firstItem="QaF-LA-BeI" firstAttribute="top" secondItem="YFl-1X-d1L" secondAttribute="bottom" constant="17" id="dj8-y9-4Mr"/>
                             <constraint firstItem="QaF-LA-BeI" firstAttribute="leading" secondItem="Dre-o6-WIO" secondAttribute="leading" id="xQW-J4-Glo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vUA-PI-dGI"/>
                     <connections>
                         <outlet property="searchCollectionView" destination="QaF-LA-BeI" id="gko-FS-ZZG"/>
+                        <outlet property="searchFieldView" destination="YFl-1X-d1L" id="0HL-YQ-xk9"/>
+                        <outlet property="searchText" destination="eVG-8h-u3C" id="yeO-Zc-s90"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qkm-QL-62l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -141,7 +174,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDY-I0-I1I">
-                                <rect key="frame" x="19.666666666666657" y="127" width="354" height="60"/>
+                                <rect key="frame" x="19.666666666666657" y="108" width="354" height="60"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search for a car" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qQ7-dL-Wx4">
                                         <rect key="frame" x="20" y="19" width="314" height="18.666666666666671"/>
@@ -153,10 +186,6 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qn-7E-gpK">
                                         <rect key="frame" x="278" y="8" width="52" height="42"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="52" id="bye-FT-n1E"/>
-                                            <constraint firstAttribute="height" constant="42" id="gCL-Lz-E9P"/>
-                                        </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="searchTab"/>
                                     </button>
@@ -164,17 +193,17 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="qQ7-dL-Wx4" firstAttribute="leading" secondItem="SDY-I0-I1I" secondAttribute="leading" constant="20" id="4eX-W7-pLF"/>
-                                    <constraint firstItem="7qn-7E-gpK" firstAttribute="top" secondItem="SDY-I0-I1I" secondAttribute="top" constant="8" id="FnZ-xR-tJ9"/>
+                                    <constraint firstItem="7qn-7E-gpK" firstAttribute="leading" secondItem="SDY-I0-I1I" secondAttribute="leading" constant="278" id="B42-jI-h2H"/>
+                                    <constraint firstItem="qQ7-dL-Wx4" firstAttribute="top" secondItem="SDY-I0-I1I" secondAttribute="top" constant="19" id="TP1-I3-yPG"/>
                                     <constraint firstAttribute="height" constant="60" id="WxK-7C-aC6"/>
+                                    <constraint firstItem="7qn-7E-gpK" firstAttribute="top" secondItem="SDY-I0-I1I" secondAttribute="top" constant="8" id="jZc-AB-71s"/>
                                     <constraint firstAttribute="trailing" secondItem="qQ7-dL-Wx4" secondAttribute="trailing" constant="20" id="lE1-Gj-Gpc"/>
-                                    <constraint firstAttribute="trailing" secondItem="7qn-7E-gpK" secondAttribute="trailing" constant="24" id="mYU-xG-TVV"/>
-                                    <constraint firstItem="qQ7-dL-Wx4" firstAttribute="top" secondItem="SDY-I0-I1I" secondAttribute="top" constant="19" id="njz-na-s8R"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jAe-OY-S5u">
-                                <rect key="frame" x="0.0" y="217" width="393" height="552"/>
+                                <rect key="frame" x="0.0" y="185" width="393" height="584"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="15" minimumInteritemSpacing="15" id="NPh-33-zPp">
-                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="itemSize" width="354" height="368"/>
                                     <size key="headerReferenceSize" width="151" height="161"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -187,8 +216,8 @@
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YiW-re-mL2">
                                             <rect key="frame" x="8" y="8" width="377" height="145"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z7F-Zz-ZZR">
-                                                <size key="itemSize" width="128" height="128"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z7F-Zz-ZZR">
+                                                <size key="itemSize" width="151" height="161"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -216,8 +245,8 @@
                             <constraint firstItem="H8l-s6-5Kf" firstAttribute="bottom" secondItem="jAe-OY-S5u" secondAttribute="bottom" id="8Ny-hM-wQa"/>
                             <constraint firstItem="SDY-I0-I1I" firstAttribute="width" secondItem="KQ1-Cz-LkE" secondAttribute="width" multiplier="0.900763" id="Rvm-sT-v6C"/>
                             <constraint firstItem="SDY-I0-I1I" firstAttribute="centerX" secondItem="H8l-s6-5Kf" secondAttribute="centerX" id="XWL-14-QY9"/>
-                            <constraint firstItem="jAe-OY-S5u" firstAttribute="top" secondItem="SDY-I0-I1I" secondAttribute="bottom" constant="30" id="oCF-rt-PRU"/>
-                            <constraint firstItem="SDY-I0-I1I" firstAttribute="top" secondItem="H8l-s6-5Kf" secondAttribute="top" constant="24" id="ztO-eg-Fdc"/>
+                            <constraint firstItem="jAe-OY-S5u" firstAttribute="top" secondItem="SDY-I0-I1I" secondAttribute="bottom" constant="17" id="oCF-rt-PRU"/>
+                            <constraint firstItem="SDY-I0-I1I" firstAttribute="top" secondItem="H8l-s6-5Kf" secondAttribute="top" constant="5" id="ztO-eg-Fdc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Car Rental" id="WK2-ai-2bF"/>

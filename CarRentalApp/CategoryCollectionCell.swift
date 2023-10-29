@@ -17,8 +17,6 @@ class CategoryCollectionCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        //self.categoryImage.clipsToBounds = false
-        categoryView.layer.cornerRadius = 15
+        categoryView.layer.cornerRadius = 21
     }
 }

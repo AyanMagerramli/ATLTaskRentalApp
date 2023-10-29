@@ -12,7 +12,7 @@ class SearchBarCollectionCell: UICollectionViewCell {
     @IBOutlet weak var searchBarField: UITextField!
     override func awakeFromNib() {
         super.awakeFromNib()
-      
+        
     }
 
     @IBAction func searchAction(_ sender: Any) {

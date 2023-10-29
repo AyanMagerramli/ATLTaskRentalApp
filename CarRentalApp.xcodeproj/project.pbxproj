@@ -12,8 +12,6 @@
 		1153466D2AEBC20E0035E1E4 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1153466C2AEBC20E0035E1E4 /* SearchVC.swift */; };
 		115346742AEBCC990035E1E4 /* SearchBarCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115346722AEBCC990035E1E4 /* SearchBarCollectionCell.swift */; };
 		115346752AEBCC990035E1E4 /* SearchBarCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115346732AEBCC990035E1E4 /* SearchBarCollectionCell.xib */; };
-		115346782AEBCEED0035E1E4 /* SearchBarTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115346762AEBCEEC0035E1E4 /* SearchBarTableCell.swift */; };
-		115346792AEBCEED0035E1E4 /* SearchBarTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115346772AEBCEED0035E1E4 /* SearchBarTableCell.xib */; };
 		11B74F242AE6DD09001C0219 /* Categories+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B74F222AE6DD09001C0219 /* Categories+CoreDataClass.swift */; };
 		11B74F252AE6DD09001C0219 /* Categories+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B74F232AE6DD09001C0219 /* Categories+CoreDataProperties.swift */; };
 		11B74F272AE6DEA4001C0219 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B74F262AE6DEA4001C0219 /* CoreData.swift */; };
@@ -44,8 +42,6 @@
 		1153466C2AEBC20E0035E1E4 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		115346722AEBCC990035E1E4 /* SearchBarCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarCollectionCell.swift; sourceTree = "<group>"; };
 		115346732AEBCC990035E1E4 /* SearchBarCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBarCollectionCell.xib; sourceTree = "<group>"; };
-		115346762AEBCEEC0035E1E4 /* SearchBarTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarTableCell.swift; sourceTree = "<group>"; };
-		115346772AEBCEED0035E1E4 /* SearchBarTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBarTableCell.xib; sourceTree = "<group>"; };
 		11B74F222AE6DD09001C0219 /* Categories+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Categories+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		11B74F232AE6DD09001C0219 /* Categories+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Categories+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		11B74F262AE6DEA4001C0219 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
@@ -128,8 +124,6 @@
 				1153466C2AEBC20E0035E1E4 /* SearchVC.swift */,
 				115346722AEBCC990035E1E4 /* SearchBarCollectionCell.swift */,
 				115346732AEBCC990035E1E4 /* SearchBarCollectionCell.xib */,
-				115346762AEBCEEC0035E1E4 /* SearchBarTableCell.swift */,
-				115346772AEBCEED0035E1E4 /* SearchBarTableCell.xib */,
 				114B0D3D2AEC738700E35E21 /* HorizontalReusableView.swift */,
 				114B0D3E2AEC738700E35E21 /* HorizontalReusableView.xib */,
 			);
@@ -195,7 +189,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				11D449992AEADE77008F65B7 /* CarCategoryCell.xib in Resources */,
-				115346792AEBCEED0035E1E4 /* SearchBarTableCell.xib in Resources */,
 				11D4498D2AEACC64008F65B7 /* TableViewCell.xib in Resources */,
 				FE9D30AB2AE3A6060004F029 /* LaunchScreen.storyboard in Resources */,
 				115346752AEBCC990035E1E4 /* SearchBarCollectionCell.xib in Resources */,
@@ -221,7 +214,6 @@
 				11B74F272AE6DEA4001C0219 /* CoreData.swift in Sources */,
 				11D449982AEADE77008F65B7 /* CarCategoryCell.swift in Sources */,
 				FE9D309C2AE3A6040004F029 /* AppDelegate.swift in Sources */,
-				115346782AEBCEED0035E1E4 /* SearchBarTableCell.swift in Sources */,
 				11C9CBBF2AE6E463002EA9DE /* CarItems+CoreDataClass.swift in Sources */,
 				11D4498C2AEACC64008F65B7 /* TableViewCell.swift in Sources */,
 				115346742AEBCC990035E1E4 /* SearchBarCollectionCell.swift in Sources */,

@@ -9,6 +9,8 @@ import UIKit
 
 class SearchVC: UIViewController {
     
+    @IBOutlet weak var searchText: UITextField!
+    @IBOutlet weak var searchFieldView: UIView!
     @IBOutlet weak var searchCollectionView: UICollectionView!
  
     
@@ -17,13 +19,22 @@ class SearchVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchFieldView.layer.cornerRadius = 30
         searchCollectionView.delegate = self
         searchCollectionView.dataSource = self
         searchCollectionView.register(UINib(nibName: "CollectionCell", bundle: nil), forCellWithReuseIdentifier: "CollectionCell")
-        searchCollectionView.register(UINib(nibName: "SearchBarCollectionCell", bundle: nil), forCellWithReuseIdentifier: "SearchBarCollectionCell")
         updateItems()
-        searchCollectionView.backgroundColor = .systemGray6
         navigationItem.title = "Search"
+    }
+    
+    @IBAction func searchAction(_ sender: Any) {
+        searchCollectionView.reloadData()
+        if let searchText = searchText.text {
+            items = coreData.items.filter({ carItem in
+                return (carItem.name?.lowercased() ?? "").contains(searchText.lowercased()) ||
+                (carItem.category?.lowercased() ?? "").contains(searchText.lowercased())
+            })
+        } 
     }
     
     func updateItems () {
@@ -35,31 +46,25 @@ class SearchVC: UIViewController {
 //MARK: -Data Source
 extension SearchVC: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        2
+        1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        } else {
-           return items.count
-        }
+        return items.count
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchBarCollectionCell", for: indexPath) as! SearchBarCollectionCell
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! CollectionCell
-            cell.carBrand.text = items[indexPath.row].category
-            cell.carModel.text = items[indexPath.row].name
-            cell.carPrice.text = items[indexPath.row].price
-            cell.engineType.text = items[indexPath.row].engine
-            return cell
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! CollectionCell
+        cell.layer.cornerRadius = 35
+        cell.carBrand.text = items[indexPath.row].category
+        cell.carModel.text = items[indexPath.row].name
+        cell.carPrice.text = items[indexPath.row].price
+        cell.engineType.text = items[indexPath.row].engine
+        return cell
     }
 }
+
 //MARK: -Delegate
 extension SearchVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -70,10 +75,6 @@ extension SearchVC: UICollectionViewDelegate {
 //MARK: -Delegate Flow layout
 extension SearchVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == 0 {
-            return CGSize(width: 354, height: 60)
-        } else {
-            return CGSize(width: 354, height: 368)
-        }
+        .init(width: collectionView.frame.width*0.855, height: 340)
     }
 }
