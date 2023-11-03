@@ -13,37 +13,35 @@ class SearchVC: UIViewController {
     @IBOutlet weak var searchFieldView: UIView!
     @IBOutlet weak var searchCollectionView: UICollectionView!
  
-    
     let coreData = CoreData(context: AppDelegate().persistentContainer.viewContext)
-    var items: [CarList] = []
+    var viewModel: SearchViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchFieldView.layer.cornerRadius = 30
-        searchCollectionView.delegate = self
-        searchCollectionView.dataSource = self
-        searchCollectionView.register(UINib(nibName: "CollectionCell", bundle: nil), forCellWithReuseIdentifier: "CollectionCell")
+        configureUI()
+        viewModel = SearchViewModel (coreData: coreData)
+        viewModel.itemsDidChange = { [weak self] in
+            self?.searchCollectionView.reloadData()
+        }
         updateItems()
         navigationItem.title = "Search"
     }
     
     @IBAction func searchAction(_ sender: Any) {
-        searchCollectionView.reloadData()
         if let searchText = searchText.text {
-            if searchText.isEmpty {
-                items = coreData.items
-            } else {
-                items = coreData.items.filter({ carItem in
-                    return (carItem.name?.lowercased() ?? "").contains(searchText.lowercased()) ||
-                    (carItem.category?.lowercased() ?? "").contains(searchText.lowercased())
-                })
-            } 
+            viewModel.filterItems(with: searchText)
         }
     }
     
+    func configureUI () {
+        searchFieldView.layer.cornerRadius = 30
+        searchCollectionView.delegate = self
+        searchCollectionView.dataSource = self
+        searchCollectionView.register(UINib(nibName: "CollectionCell", bundle: nil), forCellWithReuseIdentifier: "CollectionCell")
+    }
+    
     func updateItems () {
-        coreData.fetchItems()
-        items = coreData.items
+        viewModel.fetchItems()
     }
 }
 
@@ -54,14 +52,14 @@ extension SearchVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return viewModel.items.count
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! CollectionCell
         cell.layer.cornerRadius = 35
-        cell.configureCarCell(data: items[indexPath.row])
+        cell.configureCarCell(data: viewModel.items[indexPath.row])
         return cell
     }
 }

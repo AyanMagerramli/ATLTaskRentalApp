@@ -16,41 +16,40 @@ class HorizontalReusableView: UICollectionReusableView {
 
     @IBOutlet weak var horizontalCollection: UICollectionView!
     
-    let coreData = CoreData(context: AppDelegate().persistentContainer.viewContext)
     let coredataForCategories = CoredataForCategory(context: AppDelegate().persistentContainer.viewContext)
-    var categories = [CategoryList]()
-    var items = [CarList]()
+   // var categories = [CategoryList]()
     var selectedCategory: CategoryList?
     var delegate: CarCategoryCellDelegate?
     var selectedIndex: IndexPath?
+    var viewModel: HorizontalViewModel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        configureUI()
+       // print("MY CATEGORIEEEEEEEEESS \(categories)")
+        viewModel = HorizontalViewModel(coreData: coredataForCategories)
+        updateCategories()
+        viewModel.callback = {[weak self] in
+            self?.horizontalCollection.reloadData()
+        }
+    }
+    
+    func configureUI () {
         horizontalCollection.dataSource = self
         horizontalCollection.delegate = self
         horizontalCollection.register(UINib(nibName: "CategoryCollectionCell", bundle: nil), forCellWithReuseIdentifier: "CategoryCollectionCell")
-        updateItems()
-        updateCategories()
-        print("MY CATEGORIEEEEEEEEESS \(categories)")
-    }
-    
-    func updateItems () {
-        coreData.fetchItems()
-        items = coreData.items
-       // print(items)
     }
     
     func updateCategories () {
-        coredataForCategories.fetchItems()
-        categories = coredataForCategories.items
+        viewModel.fetchItems()
     }
 }
 
 //MARK: -Collection View Data Source
 extension HorizontalReusableView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        categories.count
+        viewModel.categories.count
     }
     
     func collectionView(
@@ -61,7 +60,7 @@ extension HorizontalReusableView: UICollectionViewDataSource {
             withReuseIdentifier: "CategoryCollectionCell",
             for: indexPath
         ) as! CategoryCollectionCell
-        cell.configureCarCell(data:  categories[indexPath.row])
+        cell.configureCarCell(data:  viewModel.categories[indexPath.row])
         cell.layer.cornerRadius = 15
 //        let categoryCount = items.filter{$0.category?.lowercased() == category.rawValue}.count
         //in order to change background color into blue
@@ -80,7 +79,7 @@ extension HorizontalReusableView: UICollectionViewDelegate, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath
         collectionView.reloadData()
-        selectedCategory = categories[indexPath.row]
+        selectedCategory = viewModel.categories[indexPath.row]
         print("Selected CATEH+GORY ISS: \(selectedCategory)")
         delegate?.carCategorySelected(selectedCategory!)
     }

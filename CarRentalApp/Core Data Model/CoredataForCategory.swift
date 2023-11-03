@@ -1,29 +1,27 @@
 //
-//  CoreData.swift
+//  CoredataForCategory.swift
 //  CarRentalApp
 //
-//  Created by Ayan on 23.10.23.
+//  Created by Ayan on 29.10.23.
 //
 
 import Foundation
 import CoreData
 
-class CoreData {
+class CoredataForCategory {
     
     var context = AppDelegate().persistentContainer.viewContext
-    var items = [CarList]()
+    var categories = [CategoryList]()
     
     init(context: NSManagedObjectContext) {
         self.context = context
     }
     
-    func saveData (carModel: CarModel ) {
-        let model = CarList(context: context)
-        model.category = carModel.category.name
-        model.name = carModel.name
-        model.engine = carModel.engine
-        model.image = carModel.image
-        model.price = carModel.price
+    func saveData (categoryModel: CategoryModel ) {
+        let model = CategoryList(context: context)
+        model.image = categoryModel.image
+        model.name = categoryModel.name
+        model.size = categoryModel.size
         
         do {
             try context.save()
@@ -31,16 +29,12 @@ class CoreData {
             print(error.localizedDescription)
         }
     }
-   
+ 
     func fetchItems() {
         do {
-            items = try context.fetch(CarList.fetchRequest())
+            categories = try context.fetch(CategoryList.fetchRequest())
         } catch {
             print(error.localizedDescription)
         }
     }
 }
-
-
-
-

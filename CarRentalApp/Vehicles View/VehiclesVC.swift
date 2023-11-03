@@ -14,45 +14,38 @@ class VehiclesVC: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     
     let coreData = CoreData(context: AppDelegate().persistentContainer.viewContext)
-    var items = [CarList]()
+    var viewModel: VehiclesViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
+        viewModel = VehiclesViewModel(coreData: coreData)
+        viewModel.itemsDidChange = { [weak self] in
+            self?.vehiclesCollectionView.reloadData()
+        }
+        updateItems()
+    }
+    
+    func configureUI () {
         vehiclesCollectionView.dataSource = self
         vehiclesCollectionView.delegate = self
+        vehiclesCollectionView.register(UINib(nibName: "\(CollectionCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(CollectionCell.self)")
+        vehiclesCollectionView.register(UINib(nibName: "HorizontalReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HorizontalReusableView")
         searchTextField.borderStyle = .none
         searchTextField.backgroundColor = UIColor.white
         searchView.layer.cornerRadius = 30
         vehiclesCollectionView.backgroundColor = .none
-        updateItems()
-        configureUI()
-        
-    }
-    
-    func configureUI () {
-        vehiclesCollectionView.register(UINib(nibName: "\(CollectionCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(CollectionCell.self)")
-        vehiclesCollectionView.register(UINib(nibName: "HorizontalReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HorizontalReusableView")
     }
     
     //MARK: - Search Text Field implementation
     @IBAction func searchAction(_ sender: Any) {
-        print("\(String(describing: searchTextField.text))")
-        vehiclesCollectionView.reloadData()
         if let searchText = searchTextField.text {
-            if searchText.isEmpty {
-                items = coreData.items
-            } else {
-                items = coreData.items.filter { carItem in
-                    return (carItem.name?.lowercased() ?? "").contains(searchText.lowercased()) ||
-                    (carItem.category?.lowercased() ?? "").contains(searchText.lowercased())
-                }
-            }
+            viewModel.filterItems(with: searchText)
         }
     }
+    
     func updateItems () {
-        coreData.fetchItems()
-        items = coreData.items
-        print("this is core data items\(coreData.items)")
+        viewModel.fetchItems()
         UserDefaults.standard.setValue(true, forKey: "isDataLoaded")
     }
 }
@@ -63,7 +56,7 @@ extension VehiclesVC: CarCategoryCellDelegate {
         let filteredItems = coreData.items.filter { $0.category?.lowercased() == category.name?.lowercased()}
         
         DispatchQueue.main.async {
-            self.items = filteredItems
+            self.viewModel.items = filteredItems
             self.vehiclesCollectionView.reloadData()
         }
     }
@@ -72,13 +65,13 @@ extension VehiclesVC: CarCategoryCellDelegate {
 //MARK: -Collection View Data Source
 extension VehiclesVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        items.count
+        viewModel.items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CollectionCell.self)", for: indexPath) as! CollectionCell
         cell.layer.cornerRadius = 35
-        cell.configureCarCell(data: items[indexPath.row])
+        cell.configureCarCell(data:  viewModel.items[indexPath.row])
         return cell
     }
 }
