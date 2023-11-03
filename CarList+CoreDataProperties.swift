@@ -42,6 +42,10 @@ extension CarList: CarItemProtocol {
         category ?? ""
     }
     
+    var categorySize: String {
+        ""
+    }
+    
 
 }
 

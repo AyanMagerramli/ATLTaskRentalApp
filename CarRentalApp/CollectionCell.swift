@@ -13,6 +13,7 @@ protocol CarItemProtocol {
     var priceText: String {get}
     var carName: String {get}
     var brandName: String {get}
+    var categorySize: String {get}
 }
 
 class CollectionCell: UICollectionViewCell {

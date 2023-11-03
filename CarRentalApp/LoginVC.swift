@@ -19,10 +19,23 @@ class LoginVC: UIViewController {
 
     @IBAction func loginButtonTapped(_ sender: Any) {
         if passwordTextField.text == "12345" && emailTextField.text == "ayan@mail.ru" {
-            let controller = storyboard?.instantiateViewController(identifier: "TabBarController")
-            navigationController?.show(controller!, sender: nil)
-            UserDefaults.standard.setValue(true, forKey: "Logged in")
+            //let controller = storyboard?.instantiateViewController(identifier: "TabBarController")
+           // navigationController?.show(controller!, sender: nil)
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                    sceneDelegate.setTabBarAsRootController(windowScene: windowScene)
+                    UserDefaults.standard.setValue(true, forKey: "Logged in")
+            } else {
+                print("user does not exist")
+            }
         }
     }
 }
 
+//if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+//   let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+//    sceneDelegate.setHomeAsRootController(windowScene: windowScene)
+//    UserDefaults.standard.setValue(true, forKey: "Logged In")
+//} else {
+//    print("User not exist")
+//}

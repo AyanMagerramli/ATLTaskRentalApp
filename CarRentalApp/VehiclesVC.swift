@@ -39,13 +39,16 @@ class VehiclesVC: UIViewController {
         print("\(String(describing: searchTextField.text))")
         vehiclesCollectionView.reloadData()
         if let searchText = searchTextField.text {
-            items = coreData.items.filter { carItem in
-                return (carItem.name?.lowercased() ?? "").contains(searchText.lowercased()) ||
-                (carItem.category?.lowercased() ?? "").contains(searchText.lowercased())
+            if searchText.isEmpty {
+                items = coreData.items
+            } else {
+                items = coreData.items.filter { carItem in
+                    return (carItem.name?.lowercased() ?? "").contains(searchText.lowercased()) ||
+                    (carItem.category?.lowercased() ?? "").contains(searchText.lowercased())
+                }
             }
         }
     }
-    
     func updateItems () {
         coreData.fetchItems()
         items = coreData.items
@@ -93,6 +96,11 @@ extension VehiclesVC: UICollectionViewDelegateFlowLayout {
         .init(width: collectionView.frame.width*0.855, height: 340)
     }
     
+    //distance between header view and collection cell
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+    }
+    
     //MARK: -Reusable (header or footer) view configuration
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(HorizontalReusableView.self)", for: indexPath) as! HorizontalReusableView
@@ -101,7 +109,7 @@ extension VehiclesVC: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        .init(width: collectionView.frame.width, height: 151)
+        .init(width: collectionView.frame.width, height: 181)
     }
 }
 

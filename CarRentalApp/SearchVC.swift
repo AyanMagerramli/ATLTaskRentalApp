@@ -30,11 +30,15 @@ class SearchVC: UIViewController {
     @IBAction func searchAction(_ sender: Any) {
         searchCollectionView.reloadData()
         if let searchText = searchText.text {
-            items = coreData.items.filter({ carItem in
-                return (carItem.name?.lowercased() ?? "").contains(searchText.lowercased()) ||
-                (carItem.category?.lowercased() ?? "").contains(searchText.lowercased())
-            })
-        } 
+            if searchText.isEmpty {
+                items = coreData.items
+            } else {
+                items = coreData.items.filter({ carItem in
+                    return (carItem.name?.lowercased() ?? "").contains(searchText.lowercased()) ||
+                    (carItem.category?.lowercased() ?? "").contains(searchText.lowercased())
+                })
+            } 
+        }
     }
     
     func updateItems () {

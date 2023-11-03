@@ -61,22 +61,15 @@ extension HorizontalReusableView: UICollectionViewDataSource {
             withReuseIdentifier: "CategoryCollectionCell",
             for: indexPath
         ) as! CategoryCollectionCell
-        
-        cell.categorySize.text = categories[indexPath.row].size
-        cell.categoryType.text = categories[indexPath.row].name
-        cell.categoryImage.image = UIImage(named: categories[indexPath.row].image ?? "")
-//        let categoryCount = items.filter{$0.category?.lowercased() == category.rawValue}.count
+        cell.configureCarCell(data:  categories[indexPath.row])
         cell.layer.cornerRadius = 15
+//        let categoryCount = items.filter{$0.category?.lowercased() == category.rawValue}.count
         //in order to change background color into blue
         //and text colors into white
         if indexPath == selectedIndex{
-            cell.categoryView.backgroundColor = .systemBlue
-            cell.categorySize.textColor = .white
-            cell.categoryType.textColor = .white
+            cell.configureUIWhenChoosed()
         } else {
-            cell.categoryView.backgroundColor = .white
-            cell.categorySize.textColor = .black
-            cell.categoryType.textColor = .black
+            cell.configureUIWhenUnChoosed()
         }
         return cell
     }
@@ -96,3 +89,5 @@ extension HorizontalReusableView: UICollectionViewDelegate, UICollectionViewDele
         .init(width: 151, height: 161)
     }
 }
+
+

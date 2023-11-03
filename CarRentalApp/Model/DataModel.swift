@@ -20,31 +20,10 @@ struct CategoryModel {
     let size: String
 }
 
-struct CarModel: CarItemProtocol {
+struct CarModel {
     let image: String
     let price: String
     let name: String
     let engine: String
     let category: CategoryModel
-    
-    var imageName: String {
-        image
-    }
-    
-    var engineType: String {
-        engine
-    }
-    
-    var priceText: String {
-        price
-    }
-    
-    var carName: String {
-        name
-    }
-    
-    var brandName: String {
-        category.name
-    }
-    
 }

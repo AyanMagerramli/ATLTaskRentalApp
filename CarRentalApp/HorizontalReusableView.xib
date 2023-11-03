@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="KZ9-Om-0rc">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="93"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                     <color key="backgroundColor" name="MainBackgrounColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="krJ-7U-E6r">
                         <size key="itemSize" width="128" height="128"/>
@@ -24,14 +24,22 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Vehicles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AsP-ZZ-rd0">
+                    <rect key="frame" x="30" y="76" width="115" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <color key="backgroundColor" name="MainBackgrounColor"/>
             <constraints>
                 <constraint firstItem="KZ9-Om-0rc" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="G1e-aE-dF8"/>
+                <constraint firstAttribute="bottom" secondItem="AsP-ZZ-rd0" secondAttribute="bottom" id="M9k-zw-hm3"/>
+                <constraint firstItem="AsP-ZZ-rd0" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="30" id="cI7-m6-NZx"/>
                 <constraint firstAttribute="trailing" secondItem="KZ9-Om-0rc" secondAttribute="trailing" id="lhp-MI-XXp"/>
                 <constraint firstItem="KZ9-Om-0rc" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="m9t-vO-kR5"/>
-                <constraint firstAttribute="bottom" secondItem="KZ9-Om-0rc" secondAttribute="bottom" id="uXY-fj-uzt"/>
+                <constraint firstAttribute="bottom" secondItem="KZ9-Om-0rc" secondAttribute="bottom" constant="30" id="uXY-fj-uzt"/>
             </constraints>
             <connections>
                 <outlet property="horizontalCollection" destination="KZ9-Om-0rc" id="Zfa-Uw-aZH"/>
@@ -41,7 +49,7 @@
     </objects>
     <resources>
         <namedColor name="MainBackgrounColor">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89800000190734863" green="0.89800000190734863" blue="0.89800000190734863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
